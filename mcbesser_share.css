@@ -1,0 +1,12 @@
+.mcbesser_share 
+   {
+      text-align: right; 
+   }
+.mcbesser_share a
+   {
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+      margin-left: 0.3125rem;
+      margin-right: 0.3125rem;
+   }

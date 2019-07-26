@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+   <head>
+      <title>jQuery - Share</title>
+      <meta charset="utf-8" />
+      <meta property="og:site_name" content="jQuery - Share" />
+      <meta property="og:url" content="https://github.com/McBesser/JQuery-Share" />
+      <meta property="og:title" content="Demo" />
+      
+    
+    <script src="third/jquery/jquery-3.4.1.min.js"></script>
+    <script src="mcbesser_share.js" defer></script>
+    
+   </head>
+   <body>
+      <div class="mcbesser_share one">   
+            <a class="mcbesser_share_button" data-type="share" data-button="facebook" title="" data-original-title="auf Facebook Teilen">Facebook</a>
+            <a class="mcbesser_share_button" data-type="share" data-button="twitter" title="" data-original-title="auf Twitter Teilen">Twitter</a>
+            <a class="mcbesser_share_button" data-type="share" data-button="whatsapp" title="" data-original-title="auf Whatsapp Teilen">Whatsapp</a>
+         </div>
+         
+         <hr>
+         
+         <div class="mcbesser_share two">   
+            <a class="mcbesser_share_button" data-type="misc" data-button="mail" title="" data-original-title="Empfehlen (E-Mail)">Empfhelen Mail</a>
+            <a class="mcbesser_share_button" data-type="misc" data-button="mail_custom[0]" title="" data-original-title="Hinweis zur Seite (E-Mail)">Hinweis zur Seite Mail</a>
+            <a class="mcbesser_share_button" data-type="misc" data-button="print" title="" data-original-title="Drucken">Print</a>
+         </div>
+
+         <hr>
+         
+         
+        
+      <script>
+         (function ($) 
+            {
+               $(document).ready(function() 
+                  {          
+                     /* get data */
+                     mcbesser_share_config.data.title = $('meta[property="og:title"]').attr('content');
+                     /* mcbesser_share_config.data.description = $('meta[property="og:description"]').attr('content'); */
+                     mcbesser_share_config.data.url = $('meta[property="og:url"]').attr('content');
+                     mcbesser_share_config.data.picture = $('meta[property="og:image"]').attr('content');
+                     
+                     /* setup */                       
+                     mcbesser_share_config.misc.mail.title = 'Empfehlen (E-Mail)';                   
+                     mcbesser_share_config.misc.mail.subject = mcbesser_share_config.data.title;
+                     mcbesser_share_config.misc.mail.body = 'Ich habe ' + mcbesser_share_config.data.title + ' auf der Seite ' + mcbesser_share_config.data.url + ' entdeckt.'; 
+                     mcbesser_share_config.misc.mail.msg = 'Es öffnet sich in wenigen Augenblicken Ihr E-Mail Programm.';
+                     mcbesser_share_config.misc.mail.icon = '<i class="far fa-envelope"></i>'; 
+                     
+                     mcbesser_share_config.misc['mail_custom[0]'].title = 'Hinweis zur Seite (E-Mail)';                   
+                     mcbesser_share_config.misc['mail_custom[0]'].subject = 'Hinweis zur Seite - ' + mcbesser_share_config.data.title;
+                     mcbesser_share_config.misc['mail_custom[0]'].body =  'Ich habe folgenden Hinweis zu der nachfolgenden Seite: ' + '\r\n' + '\r\n' + '\r\n' + '\r\n' + mcbesser_share_config.data.title + '\r\n' + mcbesser_share_config.data.url; 
+                     mcbesser_share_config.misc['mail_custom[0]'].msg = 'Es öffnet sich in wenigen Augenblicken Ihr E-Mail Programm.';
+                     mcbesser_share_config.misc['mail_custom[0]'].icon = '<i class="far fa-comment"></i>'; 
+                     mcbesser_share_config.misc['mail_custom[0]'].mail = 'test@test.test';
+                     
+                     mcbesser_share_config.misc.print.title = 'Drucken'; 
+                     mcbesser_share_config.misc.print.icon = '<i class="fas fa-print"></i>'; 
+                     
+                     mcbesser_share_config.share.twitter.title = 'auf Twitter Teilen';
+                     mcbesser_share_config.share.twitter.icon = '<i class="fab fa-twitter-square"></i>';
+                     
+                     mcbesser_share_config.share.facebook.title = 'auf Facebook Teilen';
+                     mcbesser_share_config.share.facebook.icon = '<i class="fab fa-facebook-square"></i>';
+                     mcbesser_share_config.share.facebook.app_id = '';
+                       
+                     mcbesser_share_config.share.whatsapp.title = 'auf Whatsapp Teilen'; 
+                     mcbesser_share_config.share.whatsapp.modified.title = '';
+                     mcbesser_share_config.share.whatsapp.icon = '<i class="fab fa-whatsapp-square"></i>'; 
+                     
+                     /* setup */                     
+                     $().setup_mcbesser_button(mcbesser_share_config, '');
+                                  
+
+                  });
+            })(jQuery);
+      </script>
+   </body>
+</html>
